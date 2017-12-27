@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>nodejs文件上传</title>
+    <script src="/javascripts/jquery.min.js"></script>
+  </head>
+  <body>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+        <input name="fileUpload" type="file" />
+        <input name="fileUpload" type="file" />
+        <img src="" alt="">
+        <button type="submit">上传</button>
+    </form>
+    <script>
+    (function($){
+      $('input').on('change', function(event) {
+        var files = event.target.files,
+            reader = new FileReader();
+        if(files && files[0]){
+            reader.onload = function (ev) {
+                $('img').attr('src', ev.target.result);
+            }
+            reader.readAsDataURL(files[0]);
+        }
+      })
+    }(jQuery))
+    </script>
+  </body>
+</html>
